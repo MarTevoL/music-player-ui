@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_ui/popular_list_card.dart';
+import 'package:music_player_ui/stack_cover_container.dart';
 import 'package:music_player_ui/track_data.dart';
 
 class OverviewTabView extends StatelessWidget {
@@ -10,7 +12,7 @@ class OverviewTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blueAccent.withAlpha(20),
+        color: Colors.blueAccent.withAlpha(0),
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -25,61 +27,42 @@ class OverviewTabView extends StatelessWidget {
                       width: 20.0,
                     ),
                     for (int i = 0; i < data.length; i++)
-                      StackCover(
+                      StackCoverContainer(
                         track: data[i],
                       ),
                   ],
                 ),
               ),
-            )
+            ),
+            _buildSectionTitle('Popular this week'),
+            Container(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(width: 20.0),
+                    for (int i = 0; i < data.length; i++)
+                      PopularListCard(track: data[i]),
+                  ],
+                ),
+              ),
+            ),
+            _buildSectionTitle('Top tracks'),
           ],
         ),
       ),
     );
   }
-}
 
-class StackCover extends StatelessWidget {
-  final TrackData track;
-
-  const StackCover({Key key, this.track}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 20.0),
-      child: Stack(
-        children: <Widget>[
-          Container(
-            width: 335,
-            height: 200,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16.0),
-              child: Image.asset(
-                track.imageUrl,
-                scale: 1.2,
-                fit: BoxFit.none,
-              ),
-            ),
-          ),
-          Positioned(
-            left: 20.0,
-            bottom: 20.0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  track.title,
-                  style: TextStyle(fontSize: 22.0),
-                ),
-                SizedBox(height: 8.0),
-                Text(
-                  track.artist,
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w200),
-                ),
-              ],
-            ),
-          ),
-        ],
+  Padding _buildSectionTitle(String title) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20.0, 20.0, 0.0, 20.0),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 22.0,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
