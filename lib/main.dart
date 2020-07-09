@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music_player_ui/over_view_page.dart';
+import 'package:music_player_ui/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +21,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return OverViewPage();
+    return HomePage();
   }
 }

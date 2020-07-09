@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_ui/overview_tab_view.dart';
+import 'package:music_player_ui/tab_title.dart';
 
-class OverViewPage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _OverViewPageState createState() => _OverViewPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _OverViewPageState extends State<OverViewPage>
-    with TickerProviderStateMixin {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   TabController _controller;
 
   @override
@@ -52,7 +53,15 @@ class _OverViewPageState extends State<OverViewPage>
               child: Column(
                 children: <Widget>[
                   TabBar(
-                    labelPadding: EdgeInsets.all(12.0),
+                    labelPadding: EdgeInsets.fromLTRB(20.0, 12.0, 0.0, 12.0),
+                    indicatorPadding:
+                        EdgeInsets.fromLTRB(20.0, 12.0, 0.0, 12.0),
+                    indicator: UnderlineTabIndicator(
+                      borderSide:
+                          BorderSide(width: 2.0, color: Colors.pinkAccent[200]),
+                      insets: EdgeInsets.fromLTRB(20.0, 12.0, 0.0, 0.0),
+                    ),
+                    indicatorSize: TabBarIndicatorSize.tab,
                     controller: _controller,
                     isScrollable: true,
                     unselectedLabelColor: Colors.white.withAlpha(80),
@@ -67,40 +76,17 @@ class _OverViewPageState extends State<OverViewPage>
                   ),
                   Expanded(
                     child: Container(
+                      padding: EdgeInsets.only(top: 20.0),
                       child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         controller: _controller,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blueAccent,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.greenAccent,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.redAccent,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.yellowAccent,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.orangeAccent,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.lightGreenAccent,
-                            ),
-                          ),
+                          OverviewTabView(),
+                          OverviewTabView(),
+                          OverviewTabView(),
+                          OverviewTabView(),
+                          OverviewTabView(),
+                          OverviewTabView(),
                         ],
                       ),
                     ),
@@ -110,25 +96,6 @@ class _OverViewPageState extends State<OverViewPage>
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class TabTitle extends StatelessWidget {
-  const TabTitle(
-    this.title,
-  );
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 18.0,
-        fontWeight: FontWeight.w600,
       ),
     );
   }
