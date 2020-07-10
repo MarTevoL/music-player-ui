@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               child: Column(
                 children: <Widget>[
                   TabBar(
-                    labelPadding: EdgeInsets.fromLTRB(20.0, 12.0, 0.0, 12.0),
+                    labelPadding: EdgeInsets.fromLTRB(20.0, 26.0, 0.0, 12.0),
                     indicatorPadding:
                         EdgeInsets.fromLTRB(20.0, 12.0, 0.0, 12.0),
                     indicator: UnderlineTabIndicator(
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.only(top: 20.0),
+                      padding: EdgeInsets.only(top: 28.0),
                       child: TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         controller: _controller,
