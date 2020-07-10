@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_ui/popular_list_card.dart';
 import 'package:music_player_ui/stack_cover_container.dart';
+import 'package:music_player_ui/top_track_list.dart';
 import 'package:music_player_ui/track_data.dart';
 
 class OverviewTabView extends StatelessWidget {
@@ -11,6 +12,7 @@ class OverviewTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top: 32.0),
       decoration: BoxDecoration(
         color: Colors.blueAccent.withAlpha(0),
       ),
@@ -72,71 +74,6 @@ class OverviewTabView extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-}
-
-class TopTrackList extends StatelessWidget {
-  const TopTrackList({
-    Key key,
-    this.track,
-  }) : super(key: key);
-  final TrackData track;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 16.0),
-        child: Row(
-          children: <Widget>[
-            Container(
-              width: 62,
-              height: 62,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset(
-                  track.imageUrl,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          track.title,
-                          style: TextStyle(
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          track.artist,
-                          style: TextStyle(
-                              fontSize: 12.0, fontWeight: FontWeight.w300),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      track.duration,
-                      style: TextStyle(
-                          fontSize: 16.0, fontWeight: FontWeight.w200),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

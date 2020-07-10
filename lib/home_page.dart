@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_ui/overview_tab_view.dart';
 import 'package:music_player_ui/tab_title.dart';
+import 'package:music_player_ui/track_tab_view.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -83,7 +84,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         children: [
                           OverviewTabView(),
                           OverviewTabView(),
-                          OverviewTabView(),
+                          TrackTabView(),
                           OverviewTabView(),
                           OverviewTabView(),
                           OverviewTabView(),
